@@ -12,6 +12,9 @@
 		DF7D6E7421E9756200657122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF7D6E7221E9756200657122 /* Main.storyboard */; };
 		DF7D6E7621E9756300657122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF7D6E7521E9756300657122 /* Assets.xcassets */; };
 		DF7D6E7921E9756300657122 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF7D6E7721E9756300657122 /* LaunchScreen.storyboard */; };
+		DF7D6E8221E975AC00657122 /* HomeView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7D6E8021E975AC00657122 /* HomeView3.swift */; };
+		DF7D6E8321E975AC00657122 /* HomeView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF7D6E8121E975AC00657122 /* HomeView3.xib */; };
+		DF7D6E8521E975E700657122 /* HomeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7D6E8421E975E600657122 /* HomeDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		DF7D6E7521E9756300657122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF7D6E7821E9756300657122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF7D6E7A21E9756300657122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF7D6E8021E975AC00657122 /* HomeView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView3.swift; sourceTree = "<group>"; };
+		DF7D6E8121E975AC00657122 /* HomeView3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeView3.xib; sourceTree = "<group>"; };
+		DF7D6E8421E975E600657122 /* HomeDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,9 @@
 			children = (
 				DF7D6E6E21E9756200657122 /* AppDelegate.swift */,
 				DF7D6E7021E9756200657122 /* ViewController.swift */,
+				DF7D6E8421E975E600657122 /* HomeDataModel.swift */,
+				DF7D6E8021E975AC00657122 /* HomeView3.swift */,
+				DF7D6E8121E975AC00657122 /* HomeView3.xib */,
 				DF7D6E7221E9756200657122 /* Main.storyboard */,
 				DF7D6E7521E9756300657122 /* Assets.xcassets */,
 				DF7D6E7721E9756300657122 /* LaunchScreen.storyboard */,
@@ -123,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF7D6E7921E9756300657122 /* LaunchScreen.storyboard in Resources */,
+				DF7D6E8321E975AC00657122 /* HomeView3.xib in Resources */,
 				DF7D6E7621E9756300657122 /* Assets.xcassets in Resources */,
 				DF7D6E7421E9756200657122 /* Main.storyboard in Resources */,
 			);
@@ -136,6 +146,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF7D6E7121E9756200657122 /* ViewController.swift in Sources */,
+				DF7D6E8221E975AC00657122 /* HomeView3.swift in Sources */,
+				DF7D6E8521E975E700657122 /* HomeDataModel.swift in Sources */,
 				DF7D6E6F21E9756200657122 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,14 +297,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7P37J97HN2;
 				INFOPLIST_FILE = CwbRoundFunc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.CWB.PieChart.CwbRoundFunc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CWB.CwbRoundFunc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -303,14 +316,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7P37J97HN2;
 				INFOPLIST_FILE = CwbRoundFunc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.CWB.PieChart.CwbRoundFunc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CWB.CwbRoundFunc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

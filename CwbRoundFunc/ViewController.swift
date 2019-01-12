@@ -1,20 +1,16 @@
-//
-//  ViewController.swift
-//  CwbRoundFunc
-//
-//  Created by 成都市中鸽科技 on 2019/1/12.
-//  Copyright © 2019年 com.cwb. All rights reserved.
-//
 
 import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var topView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let homView = Bundle.main.loadNibNamed("HomeView3", owner: self, options: nil)?.first as! HomeView3
+        homView.layoutIfNeeded()
+        homView.frame = self.topView.bounds
+        self.topView.addSubview(homView)
     }
-
-
+    
 }
-

@@ -42,7 +42,16 @@ class HomeView3: UIView ,CAAnimationDelegate{
                 layer.removeFromSuperlayer()
             }
         }
-        
+        ///初始化数据源
+        if self.HomeDataArray.count > 0 {
+            self.HomeDataArray.removeAll()
+        }
+        for i in 0..<angs.count {
+            let model = HomeDataModel()
+            model.Title = "标题\(i + 1)"
+            model.Info = "信息\(i + 1)信息\(i + 1)信息\(i + 1)信息\(i + 1)信息\(i + 1)信息\(i + 1)"
+            self.HomeDataArray.append(model)
+        }
         pointCenter = CGPoint.init(x: frame.size.width * 0.5, y: frame.size.height - 20)
         UIGraphicsBeginImageContext(self.bounds.size)
         ///外半圆
@@ -51,7 +60,7 @@ class HomeView3: UIView ,CAAnimationDelegate{
         
         let layer = CAShapeLayer.init()
         layer.lineWidth = 1
-        layer.strokeColor = UIColor.init(r: 169, g: 220, b: 242).cgColor
+        layer.strokeColor = UIColor.init(red: 169 / 255, green: 220 / 255, blue: 242 / 255, alpha: 1).cgColor
         layer.fillColor = UIColor.clear.cgColor
         path.stroke()
         layer.path = path.cgPath
@@ -78,16 +87,15 @@ class HomeView3: UIView ,CAAnimationDelegate{
         cenView.layer.masksToBounds = true
         cenView.layer.cornerRadius = cenView.bounds.size.width * 0.5
         cenView.backgroundColor = UIColor.white
-        cenView.layer.borderColor = UIColor.init(r: 169, g: 220, b: 242).cgColor
+        cenView.layer.borderColor = UIColor.init(red: 169 / 255, green: 220 / 255, blue: 242 / 255, alpha: 1).cgColor
         cenView.layer.borderWidth = 0.3
         rView.addSubview(cenView)
-        rView.layer.shadowColor = UIColor.init(r: 169, g: 220, b: 242).cgColor
+        rView.layer.shadowColor = UIColor.init(red: 169/255, green: 220/255, blue: 242/255, alpha: 1).cgColor
         rView.layer.shadowOpacity = 1
         rView.layer.shadowRadius = 7
         self.bgView.addSubview(rView)
         
         UIGraphicsEndImageContext()
-        
         ///创建功能图片
         self.creatFunButton()
     }
@@ -176,7 +184,7 @@ class HomeView3: UIView ,CAAnimationDelegate{
         path1.stroke()
         animLayer = CAShapeLayer.init()
         animLayer?.frame = CGRect.init(x: frame.size.width * 0.5 - width * 0.5, y: frame.size.height - height * 0.5 - 20, width: width, height: height)
-        animLayer?.strokeColor = UIColor.init(r: 169, g: 220, b: 242).cgColor
+        animLayer?.strokeColor = UIColor.init(red: 169/255, green: 220/255, blue: 242/255, alpha: 1).cgColor
         animLayer?.fillColor = UIColor.white.cgColor
         animLayer?.path = path1.cgPath
         self.bgView.layer.addSublayer(animLayer!)
@@ -186,7 +194,7 @@ class HomeView3: UIView ,CAAnimationDelegate{
     fileprivate func animotion(angle:CGFloat){
         let ani = CABasicAnimation.init(keyPath: "transform.rotation.z")
         ani.isRemovedOnCompletion = false
-        ani.fillMode = kCAFillModeForwards
+        ani.fillMode = CAMediaTimingFillMode.forwards
         var durDis = self.currentAngle - angle
         if durDis < 0 {
             durDis = -durDis
@@ -255,59 +263,3 @@ class HomeView3: UIView ,CAAnimationDelegate{
 //    }
 }
 
-extension HomeView3 {
-    func getData(){
-        NetRequestManager.defaultStance.netRequestNeedHeader(methodType: .post, showProgress: true, showErrorView: true, params: ["uid":UserInfomationModel().uidString!], methodName: "/CAPI/V1/TXGP_HomeTop_Tips") { (object) in
-            if let dic = object {
-                if let errorCode = dic["errorCode"] as? Int,let msg = dic["msg"] as? String{
-                    if errorCode == 0 {
-                        if let data = dic["data"] as? [[String:Any]] {
-                            if self.HomeDataArray.count > 0 {
-                                self.HomeDataArray.removeAll()
-                            }
-                            if self.HomeDataArray.count > 0 {
-                                self.HomeDataArray.removeAll()
-                            }
-                            var modelArray = [HomeDataModel]()
-                            for dataDic in data {
-                                let model = HomeDataModel()
-                                if let title = dataDic["Title"] as? String {
-                                    model.Title = title
-                                }
-                                if let Info = dataDic["Info"] as? String {
-                                    model.Info = Info
-                                }
-                                if let tid = dataDic["TypeID"] as? Int{
-                                    model.typeid = tid
-                                }
-                                modelArray.append(model)
-                            }
-                            for (index,i) in [5,6,4,2,1,3].enumerated() {
-                                for model in modelArray {
-                                    if modelArray.first!.typeid == i {
-                                        self.selecIndex = index
-                                    }
-                                    if model.typeid == i {
-                                        self.HomeDataArray.append(model)
-                                        break
-                                    }
-                                }
-                            }
-                            self.funcView[0].frame.size = CGSize.init(width: 37, height: 37)
-                            self.funcView[0].image = self.imgs1[0]
-                            self.funcView[0].center = self.funCenter[0]
-                            self.funcView[self.selecIndex].frame.size = CGSize.init(width: 50, height: 50)
-                            self.funcView[self.selecIndex].image = self.imgs2[self.selecIndex]
-                            self.funcView[self.selecIndex].center = self.funCenter[self.selecIndex]
-                            self.animotion(angle: self.angs[self.selecIndex])
-                            self.isCanAnimotion = false
-                        }
-                    }
-                    else {
-                        self.alertViewMsg(msg: msg)
-                    }
-                }
-            }
-        }
-    }
-}
